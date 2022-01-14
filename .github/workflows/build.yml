@@ -1,4 +1,4 @@
-name: opencv-cuda-ubuntu
+name: build-multi-arch
 
 on:
   push:
