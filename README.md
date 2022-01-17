@@ -1,10 +1,14 @@
 [![Build Status](https://travis-ci.org/kartoza/docker-postgis.svg?branch=develop)](https://travis-ci.org/kartoza/docker-postgis)
 
+
+源于 https://github.com/kartoza/docker-postgis，增加了MAX_CONNECTIONS参数
+
+
 # docker-postgis
 
 A simple docker container that runs PostGIS
 
-Visit our page on the docker hub at: https://hub.docker.com/r/kartoza/postgis/
+Visit our page on the docker hub at: https://hub.docker.com/r/bryantrh/postgresql-postgis/
 
 There are a number of other docker postgis containers out there. This one
 differentiates itself by:
@@ -223,6 +227,11 @@ Maximum size to let the WAL grow to between automatic WAL checkpoints.
 * `-e WAL_SEGSIZE=1024`
 * `-e MAINTAINANCE_WORK_MEM=128MB`
 
+#### Configure MaxConnections
+default： 1000
+
+* `-e MAX_CONNECTIONS=2000`
+
 #### Configure networking
 You can open up the PG port by using the following environment variable. By default
 the container will allow connections only from the docker private subnet.
@@ -350,7 +359,7 @@ sure clients connect with verify-ca or verify-full sslmode).
 The following is an example Dockerfile that sets up a container with custom ssl private key and certificate:
 
 ```
-FROM kartoza/postgis:11.0-2.5
+FROM bryantrh/postgresql-postgis:11.0-2.5
 
 ADD ssl_cert.pem /etc/ssl/certs/ssl_cert.pem
 ADD localhost_ssl_key.pem /etc/ssl/private/ssl_key.pem
